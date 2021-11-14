@@ -15,32 +15,9 @@ typedef struct
 	} electeurs;
 	
 	
-//	      void Vote(president p[],electeurs e[])
-//		  {
-//		  	int i,j;
-//	      	for(i=0;i<10;i++)
-//	      	{
-//	      		printf("entrer ur CIN \n");
-//				scanf("%s",e[i].cin);
-//				for(j=0;j<5;j++)
-//				{
-//					printf("choisir un président \n");
-//					printf("%d\t",p[j].id);
-//					scanf("%d",&e[j].vote);
-//					 if(e[j].vote==p[j].id)
-//					 {
-//					 	p[j].numVote++;
-//					 }
-//				}
-//			  }
-//			 
-//		  }
-
-	
-	
-
 int main()
 {
+	int choix;
 	electeurs e[10];
 	 president p[5]={
 	 	{
@@ -62,14 +39,23 @@ int main()
 	 };
 	
 	 int i;
+	 
 	 for(i=0;i<5;i++)
 	 {
-	 	printf("\t %d \t %s \t %s \t %d \n",p[i].id,p[i].nom,p[i].pnom,p[i].numVote);
+	 	printf("\t %d \t %s \t %s  \n",p[i].id,p[i].nom,p[i].pnom);
 	 	
 	 }
-//	 Vote(p,e);
 	int j;
-	      	for(i=0;i<3;i++)
+	
+	printf("\t 1: Vote \n");
+	printf("\t 2: Resultat \n");
+	printf("Entrer ur choix : \n");
+	scanf("%d",&choix);
+	do{
+
+	if(choix == 1)
+	{
+			for(i=0;i<3;i++)
 	      	{
 	      		printf("entrer ur CIN \n");
 				scanf("%d",&e[i].cin);
@@ -85,10 +71,9 @@ int main()
 				
 				}
 			  }
-			 for(i=0;i<5;i++)
-	 {
-	 	printf("\t %d \t %s \t %s \t %d \n",p[i].id,p[i].nom,p[i].pnom,p[i].numVote);
-	 	
-	 }
+	}
+	  	}while(choix!=2);    
+
+
 	
 }
