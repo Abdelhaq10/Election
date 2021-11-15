@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+
 typedef struct
     {
     	int id;
@@ -8,16 +9,18 @@ typedef struct
     	char pnom[30];
     	int numVote;
 	} president;
+//	void result(president p[5]);
 	typedef struct
     {
     	int cin;
     	int vote;
 	} electeurs;
-	
-	
+void vote(president p[5],electeurs e[],int n);
+void result(president p[5]);
 int main()
 {
-	int choix;
+
+	int choix,n;
 	electeurs e[10];
 	 president p[5]={
 	 	{
@@ -35,30 +38,58 @@ int main()
 		 	{
 	 		5,"iopk","ghkd",0
 		 },
-	 
+
 	 };
-	
+
 	 int i;
-	 
+
 	 for(i=0;i<5;i++)
 	 {
 	 	printf("\t %d \t %s \t %s  \n",p[i].id,p[i].nom,p[i].pnom);
-	 	
+
 	 }
 	int j;
-	
-	printf("\t 1: Vote \n");
+
+
+
+	do{
+            printf("\t 1: Vote \n");
 	printf("\t 2: Resultat \n");
 	printf("Entrer ur choix : \n");
-	scanf("%d",&choix);
-	do{
-
+    scanf("%d",&choix);
 	if(choix == 1)
 	{
-			for(i=0;i<3;i++)
+	    printf("Enter the number of electeurs \n");
+        scanf("%d",&n);
+        vote(p,e,n);
+	}
+	else if(choix == 2)
+    {
+//        for(i=0;i<5;i++)
+//	 {
+//	 	printf("\t %d \t %s \t %s \t %d \n",p[i].id,p[i].nom,p[i].pnom,p[i].numVote);
+//
+//	 }
+result(p);
+
+    }
+	  	}while(choix!=2);
+
+
+
+}
+
+void vote(president p[5],electeurs e[],int n)
+{
+    int i,j;
+    	for(i=0;i<=n-1;i++)
 	      	{
 	      		printf("entrer ur CIN \n");
 				scanf("%d",&e[i].cin);
+    if(e[i].cin!=e[i-1].cin)
+    {
+
+
 					printf("choisir un président \n");
 					scanf("%d",&e[i].vote);
 				for(j=0;j<5;j++)
@@ -66,14 +97,49 @@ int main()
 						 if(e[i].vote==p[j].id)
 					 {
 					 	p[j].numVote++;
-					
+
 					 }
-				
+
 				}
+
+     }
+     else {
+        printf("you already voted sir !!\n");
+        printf("choisir un président \n");
+					scanf("%d",&e[i].vote);
+					for(j=0;j<5;j++)
+				{
+						 if(e[i].vote==p[j].id)
+					 {
+					 	p[j].numVote++;
+
+					 }
+
+				}
+     }
+
 			  }
-	}
-	  	}while(choix!=2);    
-
-
-	
 }
+
+void result(president p[5])
+{
+    int i,totalVote=0,percentVote;
+    for(i=0;i<5;i++)
+    {
+        totalVote+=p[i].numVote;
+    }
+    printf("total is %d \t",totalVote);
+//    for(i=0;i<5;i++)
+//    {
+//
+//    }
+}
+
+//void result(president p[5]){
+//    int i;
+//for(i=0;i<5;i++)
+//	 {
+//	 	printf("\t %d \t %s \t %s \t %d \n",p[i].id,p[i].nom,p[i].pnom,p[i].numVote);
+//
+//	 }
+//}
