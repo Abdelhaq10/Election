@@ -17,6 +17,7 @@ typedef struct
 	} electeurs;
 void vote(president p[5],electeurs e[],int n);
 void result(president p[5]);
+void listElecteurs(electeurs e[],int n);
 int main()
 {
 
@@ -53,8 +54,9 @@ int main()
 
 
 	do{
-            printf("\t 1: Vote \n");
-	printf("\t 2: Resultat \n");
+    printf("\t 1: Vote \n");
+    printf("\t 2: List de electeurs \n");
+	printf("\t 3: Resultat \n");
 	printf("Entrer ur choix : \n");
     scanf("%d",&choix);
 	if(choix == 1)
@@ -63,7 +65,11 @@ int main()
         scanf("%d",&n);
         vote(p,e,n);
 	}
-	else if(choix == 2)
+	else if(choix==2)
+        {
+        listElecteurs(e,n);
+	}
+	else if(choix == 3)
     {
 //        for(i=0;i<5;i++)
 //	 {
@@ -73,7 +79,7 @@ int main()
 result(p);
 
     }
-	  	}while(choix!=2);
+	  	}while(choix!=3);
 
 
 
@@ -133,6 +139,23 @@ void result(president p[5])
 //    {
 //
 //    }
+}
+void listElecteurs(electeurs e[],int n)
+{
+    int i,totalVote=0;
+    for(i=0;i<=n-1;i++)
+    {
+       totalVote+=e[i].vote;
+    }
+      if(totalVote!=0)
+        {
+            printf("\t %d \t  %d \n",e[i].cin,e[i].vote);
+        }
+
+        else{
+        printf("\t *no one have voted yet* \n");
+    }
+
 }
 
 //void result(president p[5]){
