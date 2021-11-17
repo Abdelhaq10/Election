@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+
 typedef struct
     {
     	int id;
@@ -31,7 +32,7 @@ int main()
 	electeurs e[10];
 	  president p[5]={
 	 	{
-	 		1,"Azer","Tyui",1,1
+	 		1,"Azer","Tyui",0,1
 		 },
 		 	{
 	 		2,"jklm","wxcv",1,1
@@ -183,21 +184,22 @@ void result(president p[5])
 {
     int ifEqual=p[0].numVote,c=0;
     int i,totalVote=0,percentVote;
-//    for(i=0;i<5;i++)
-//    {
-//        totalVote+=p[i].numVote;
-//    }
-//    printf("total is %d \t",totalVote);
+    for(i=0;i<5;i++)
+    {
+        totalVote+=p[i].numVote;
+    }
+    printf("total is %d \t",totalVote);
     for(i=1;i<5;i++)
     {
-        if(ifEqual != p[i].numVote)
+        if(p[0].numVote != p[i].numVote)
         {
-            c++;
 
+c = 1;
+break;
         }
 
     }
-    printf("c is %d\n",c);
+
     if(c!=0)
     {
          votePercent(p);
@@ -233,7 +235,7 @@ void votePercent(president p[])
 {
 
 
-int i;
+int i,index=0,pos=0;
 float totalVote=0,percentVote=0;
     for (i = 0; i < 5; i++)
     {
@@ -241,7 +243,7 @@ float totalVote=0,percentVote=0;
 
     }
 
-    percentVote=(totalVote*15)/100;
+//    percentVote=(totalVote*15)/100;
       printf("\t Id \t Nom \t Prenom   Nombre De Vote \t State \n");
       printf("\t -----|--------|---------|----------------|--------\n");
    for (i = 0; i < 5; i++)
@@ -251,12 +253,26 @@ float totalVote=0,percentVote=0;
                     p[i].isVisible=0;
 
                 }
-                printf("\t %d \t %s \t %s \t \t %d \t      %s\n",p[i].id,p[i].nom,p[i].pnom,p[i].numVote,state(p[i]));
-//            else
-//                {
-//                   printf("\t %d \t %s \t %s \t \t %d \t %s\n",p[i].id,p[i].nom,p[i].pnom,p[i].numVote,state(p[i]));
-//                }
+            else
+            {
+                 index++;
+                    pos=i;
+            }
 
+    }
+    for(i = 0; i < 5; i++)
+    {
+        if(index>1)
+            {
+            printf("\t %d \t %s \t %s \t \t %d \t      %s\n",p[i].id,p[i].nom,p[i].pnom,p[i].numVote,state(p[i]));
+
+            }
+        else if(index == 1)
+        {
+            printf("The winner candidate is %s %s \n",p[pos].nom,p[pos].pnom);
+//            exit(0);
+break;
+        }
     }
 //    initializePresident(p);
 }
