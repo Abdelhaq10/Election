@@ -52,7 +52,7 @@ int main()
 
 	 int i;
 
-            printf("\t Id \t Nom \t Prenom   Nombre De Vote \t State \n");
+            printf("\t Id \t Nom \t Prenom   Nombre De Vote     State \n");
       printf("\t -----|--------|---------|----------------|--------\n");
 	 for(i=0;i<5;i++)
 	 {
@@ -156,7 +156,7 @@ void result(president p[5])
     {
         totalVote+=p[i].numVote;
     }
-    printf("total is %d \t",totalVote);
+
     for(i=1;i<5;i++)
     {
         if(p[0].numVote != p[i].numVote)
@@ -204,16 +204,16 @@ void votePercent(president p[])
 
 
 int i,index=0,pos=0;
-float totalVote=0,percentVote=0;
+float totalVote=0;
     for (i = 0; i < 5; i++)
     {
         totalVote+=p[i].numVote;
 
     }
 
-//    percentVote=(totalVote*15)/100;
-      printf("\t Id \t Nom \t Prenom   Nombre De Vote \t State \n");
-      printf("\t -----|--------|---------|----------------|--------\n");
+
+     printf("\t Id \t Nom \t Prenom   Nombre De Vote     State \n");
+    printf("\t -----|--------|---------|----------------|--------\n");
    for (i = 0; i < 5; i++)
     {
             if (p[i].numVote / totalVote*100<=15)
