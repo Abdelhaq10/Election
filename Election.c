@@ -32,19 +32,19 @@ int main()
 	electeurs e[10];
 	  president p[5]={
 	 	{
-	 		1,"Azer","Tyui",0,1
+	 		1,"James","Polk",0,1
 		 },
 		 	{
-	 		2,"jklm","wxcv",1,1
+	 		2,"John","Adams",0,1
 		 },
 		 	{
-	 		3,"opqs","dfgh",2,1
+	 		3,"Vladi","Putin",0,1
 		 },
 		 	{
-	 		4,"reza","teru",0,1
+	 		4,"Joe","Biden",0,1
 		 },
 		 	{
-	 		5,"iopk","ghkd",0,1
+	 		5,"John","Tyler",0,1
 		 },
 
 	 };
@@ -52,14 +52,14 @@ int main()
 
 	 int i;
 
-            printf("\t Id \t Nom \t Prenom \t Nombre De Vote \n");
-            printf("\t -----|--------|---------|--------------\n");
+            printf("\t Id \t Nom \t Prenom   Nombre De Vote \t State \n");
+      printf("\t -----|--------|---------|----------------|--------\n");
 	 for(i=0;i<5;i++)
 	 {
 	     if(p[i].isVisible==1)
          {
 
-             printf("\t %d \t %s \t %s \t \t %d \t %s \n",p[i].id,p[i].nom,p[i].pnom,p[i].numVote,state(p[i]));
+            printf("\t %d \t %s \t %s \t \t %d \t      %s\n",p[i].id,p[i].nom,p[i].pnom,p[i].numVote,state(p[i]));
          }
 
 
@@ -71,9 +71,9 @@ int main()
 	do{
     printf("\t 1: Vote \n");
     printf("\t 2: List de electeurs \n");
-	printf("\t 3: Resultat \n");
-	printf("\t 4: Delete \n");
-	printf("Entrer ur choix : \n");
+	printf("\t 3: Resulte \n");
+
+	printf("Enter your choix : \n");
     scanf("%d",&choix);
             if(choix == 1)
                 {
@@ -91,20 +91,9 @@ int main()
                 result(p);
 
                 }
-            else if(choix==4)
-                {
-                votePercent(p);
-                }
-            else if(choix==5)
-                {
-                initializeElecteur(e,n);
-                }
-            else if(choix==6)
-                {
-                initializePresident(p);
-                }
+
     }
-    while(choix!=7);
+    while(choix!=4);
 
 
 
@@ -122,28 +111,6 @@ int main()
                   {
                     printf("choisir un président \n");
                     scanf("%d",&e[i].vote);
-                    //DO WHILE VERSION
-//                int x=0;
-//                    do{
-//                        if(e[i].vote==p[x].id && p[x].isVisible==1)
-//                  {
-//                    p[j].numVote++;
-//                  }
-//                    else if(p[x].isVisible==0)
-//                    {
-//                        printf("The candidate that u've voted on has been eliminated \n");
-//                    }
-//                    x++;
-//                    }while(p[x].isVisible==1);
-
-//                    for(int x = 0; x < 5; x++){
-//
-//                    }
-
-
-
-
-
 
             for(j=0;j<5;j++)
             {
@@ -156,6 +123,7 @@ int main()
                     {
                         printf("The candidate that u've voted on has been eliminated \n");
                           printf("choisir un président \n");
+
                             scanf("%d",&e[i].vote);
                     }
 
@@ -264,27 +232,18 @@ float totalVote=0,percentVote=0;
     {
         if(index>1)
             {
+                    initializePresident(p);
             printf("\t %d \t %s \t %s \t \t %d \t      %s\n",p[i].id,p[i].nom,p[i].pnom,p[i].numVote,state(p[i]));
 
             }
         else if(index == 1)
         {
             printf("The winner candidate is %s %s \n",p[pos].nom,p[pos].pnom);
-//            exit(0);
-break;
+            exit(0);
         }
     }
-//    initializePresident(p);
-}
-//void result(president p[5]){
-//    int i;
-//for(i=0;i<5;i++)
-//	 {
-//	 	printf("\t %d \t %s \t %s \t %d \n",p[i].id,p[i].nom,p[i].pnom,p[i].numVote);
-//
-//	 }
-//}
 
+}
 
 void initializeElecteur(electeurs e[],int n)
 {
@@ -295,10 +254,6 @@ void initializeElecteur(electeurs e[],int n)
         e[i].vote=0;
 
     }
-//        for(i=0;i<=n-1;i++)
-//    {
-//      printf("\t num :  %d \t  cin : %d \n",i+1,e[i].cin);
-//    }
 }
 void initializePresident(president p[])
 {
@@ -307,10 +262,7 @@ void initializePresident(president p[])
 	 for(i=0;i<5;i++)
 	 {
         p[i].numVote=0;
-//	 	 printf("\t %d \t %s \t %s \t \t %d \n",p[i].id,p[i].nom,p[i].pnom,p[i].numVote);
-
 	 }
-
 }
 void restartTour(president p[])
 {
